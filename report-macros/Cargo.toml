@@ -1,0 +1,20 @@
+[package]
+name = "report-macros"
+version = "1.0.0"
+authors = ["Phillip Mendel"]
+edition = "2021"
+license = "MIT"
+categories = ["development-tools::debugging"]
+keywords = ["logging", "report", "debugging"]
+description = "Complementary procedural macros for the report crate"
+readme = "README.md"
+documentation = "https://docs.rs/report-macros"
+repository = "https://github.com/K83FJ3M4/report-macros"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1.0.85"
+quote = "1.0.36"
+syn = { version = "2.0.66", features = ["full"] }

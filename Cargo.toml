@@ -1,0 +1,25 @@
+[package]
+name = "report"
+version = "1.0.0"
+authors = ["Phillip Mendel"]
+edition = "2021"
+license = "MIT"
+categories = ["development-tools::debugging"]
+keywords = ["logging", "report", "debugging"]
+description = "Contextual logging and error reporting"
+documentation = "https://docs.rs/report"
+repository = "https://github.com/K83FJ3M4/report"
+readme = "README.md"
+
+[workspace]
+members = ["report-macros"]
+
+[dependencies]
+report-macros = { path = "./report-macros", version = "1.0.0"}
+console = "0.15.8"
+
+[features]
+default = ["unicode", "frame", "color"]
+unicode = []
+frame = []
+color = []
