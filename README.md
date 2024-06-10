@@ -61,7 +61,7 @@ fn task_two(file: &str) -> Result {
 
 ```text
 ╭───────────────────────────────────────────────────────────────────────────────────────╮
-│ Running experinments                                                                  │
+│ Running experiments                                                                   │
 ├─┬─────────────────────────────────────────────────────────────────────────────────────┤
 │ ├── Running task one on data.txt                                                      │
 │ │   ╰── error: No such file or directory (os error 2)                                 │
