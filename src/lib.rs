@@ -62,7 +62,10 @@ impl Report<fn() -> String> {
     ///```
     pub fn info(message: Arguments) {
         if !ACTIVE.get() {
-            return println!("{}: {message}", Style::new().blue().apply_to("info"))
+            #[cfg(feature = "color")]
+            return println!("{}: {message}", Style::new().blue().apply_to("info"));
+            #[cfg(not(feature = "color"))]
+            return println!("info: {message}");
         }
         let mut actions = ACTIONS.take();
         actions.push(Action::Info(message.to_string()));
@@ -80,7 +83,10 @@ impl Report<fn() -> String> {
     ///```
     pub fn warn(message: Arguments) {
         if !ACTIVE.get() {
-            return println!("{}: {message}", Style::new().yellow().apply_to("warning"))
+            #[cfg(feature = "color")]
+            return println!("{}: {message}", Style::new().yellow().apply_to("warning"));
+            #[cfg(not(feature = "color"))]
+            return println!("warning: {message}");
         }
         let mut actions = ACTIONS.take();
         actions.push(Action::Warn(message.to_string()));
@@ -97,8 +103,11 @@ impl Report<fn() -> String> {
     ///Report::error(format_args!("Error: {data}"));
     ///```
     pub fn error(message: Arguments) {
-        if !ACTIVE.get() { 
-            return println!("{}: {message}", Style::new().red().apply_to("error"))
+        if !ACTIVE.get() {
+            #[cfg(feature = "color")]
+            return println!("{}: {message}", Style::new().red().apply_to("error"));
+            #[cfg(not(feature = "color"))]
+            return println!("error: {message}");
         }
         let mut actions = ACTIONS.take();
         actions.push(Action::Error(message.to_string()));
